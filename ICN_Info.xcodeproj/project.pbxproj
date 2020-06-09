@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		7C23535F66988CE927007ADD /* Pods_ICN_Info.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37C0BD721C22B0CB67207F1D /* Pods_ICN_Info.framework */; };
+		E14FA21D248FDE5900852FCE /* ParkingLotInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14FA21C248FDE5900852FCE /* ParkingLotInfoTableViewCell.swift */; };
+		E14FA220248FE55A00852FCE /* ICN_parking.png in Resources */ = {isa = PBXBuildFile; fileRef = E14FA21F248FE55A00852FCE /* ICN_parking.png */; };
 		E193A4B6248FA7A6009FB363 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E193A4B5248FA7A6009FB363 /* AppDelegate.swift */; };
 		E193A4B8248FA7A6009FB363 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E193A4B7248FA7A6009FB363 /* SceneDelegate.swift */; };
 		E193A4BA248FA7A6009FB363 /* ParkingLotInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E193A4B9248FA7A6009FB363 /* ParkingLotInfoViewController.swift */; };
@@ -21,6 +23,8 @@
 		0F7D07056936A6A4E8886B64 /* Pods-ICN_Info.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ICN_Info.release.xcconfig"; path = "Target Support Files/Pods-ICN_Info/Pods-ICN_Info.release.xcconfig"; sourceTree = "<group>"; };
 		37C0BD721C22B0CB67207F1D /* Pods_ICN_Info.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ICN_Info.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BAEF3F050AAB5F8F8A148850 /* Pods-ICN_Info.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ICN_Info.debug.xcconfig"; path = "Target Support Files/Pods-ICN_Info/Pods-ICN_Info.debug.xcconfig"; sourceTree = "<group>"; };
+		E14FA21C248FDE5900852FCE /* ParkingLotInfoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParkingLotInfoTableViewCell.swift; sourceTree = "<group>"; };
+		E14FA21F248FE55A00852FCE /* ICN_parking.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ICN_parking.png; path = resource/ICN_parking.png; sourceTree = SOURCE_ROOT; };
 		E193A4B2248FA7A6009FB363 /* ICN_Info.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ICN_Info.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E193A4B5248FA7A6009FB363 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E193A4B7248FA7A6009FB363 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -52,10 +56,19 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		E14FA21E248FE23200852FCE /* Recources */ = {
+			isa = PBXGroup;
+			children = (
+				E14FA21F248FE55A00852FCE /* ICN_parking.png */,
+			);
+			path = Recources;
+			sourceTree = "<group>";
+		};
 		E154BCBE248FB25B004DA6DC /* ParkingLotInfo */ = {
 			isa = PBXGroup;
 			children = (
 				E193A4B9248FA7A6009FB363 /* ParkingLotInfoViewController.swift */,
+				E14FA21C248FDE5900852FCE /* ParkingLotInfoTableViewCell.swift */,
 			);
 			path = ParkingLotInfo;
 			sourceTree = "<group>";
@@ -81,6 +94,7 @@
 		E193A4B4248FA7A6009FB363 /* ICN_Info */ = {
 			isa = PBXGroup;
 			children = (
+				E14FA21E248FE23200852FCE /* Recources */,
 				E154BCBE248FB25B004DA6DC /* ParkingLotInfo */,
 				E193A4B5248FA7A6009FB363 /* AppDelegate.swift */,
 				E193A4B7248FA7A6009FB363 /* SceneDelegate.swift */,
@@ -165,6 +179,7 @@
 				E193A4C5248FA7A7009FB363 /* LaunchScreen.storyboard in Resources */,
 				E193A4C2248FA7A7009FB363 /* Assets.xcassets in Resources */,
 				E193A4BD248FA7A6009FB363 /* Main.storyboard in Resources */,
+				E14FA220248FE55A00852FCE /* ICN_parking.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -220,6 +235,7 @@
 				E193A4BA248FA7A6009FB363 /* ParkingLotInfoViewController.swift in Sources */,
 				E193A4B6248FA7A6009FB363 /* AppDelegate.swift in Sources */,
 				E193A4C0248FA7A6009FB363 /* ICN_Info.xcdatamodeld in Sources */,
+				E14FA21D248FDE5900852FCE /* ParkingLotInfoTableViewCell.swift in Sources */,
 				E193A4B8248FA7A6009FB363 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

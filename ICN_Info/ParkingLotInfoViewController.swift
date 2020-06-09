@@ -5,74 +5,97 @@
 //  Created by MoNireu on 2020/06/09.
 //  Copyright © 2020 monireu. All rights reserved.
 //
-
 import UIKit
 
 class ParkingLotInfoViewController: UIViewController {
 
-    @IBOutlet var parkingLotInfoCollectionView: UICollectionView!
     
+    @IBOutlet var airportSegmentCtrl: UISegmentedControl!
+    @IBOutlet var parkingLotImgView: UIImageView!
+    @IBOutlet var navigationBarTopVIew: UIView!
+    @IBOutlet var navigationBar: UINavigationBar!
+    @IBOutlet var navigationBarBottomView: UIView!
+    @IBOutlet var tableView: UITableView!
+    
+    var dummyData: [DummyData] {
+        var dataList = [DummyData]()
+        let dummyData1 = DummyData(_name: "지상 1층", _carAvailable: 2000, _parkingLotCapacity: 2000)
+        dataList.append(dummyData1)
+        let dummyData2 = DummyData(_name: "지하 1층", _carAvailable: 100, _parkingLotCapacity: 2000)
+        dataList.append(dummyData2)
+        let dummyData3 = DummyData(_name: "지하 2층", _carAvailable: 500, _parkingLotCapacity: 2000)
+        dataList.append(dummyData3)
+        
+        return dataList
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let navigationBarBackgroundColor        = UIColor.systemGray6
+        navigationBar.barTintColor              = navigationBarBackgroundColor
+        navigationBar.backgroundColor           = navigationBarBackgroundColor
+        navigationBarTopVIew.backgroundColor    = navigationBarBackgroundColor
+        navigationBarBottomView.backgroundColor = navigationBarBackgroundColor
         
-        parkingLotInfoCollectionView.delegate = self
-        parkingLotInfoCollectionView.dataSource = self
+        
+        parkingLotImgView.image = UIImage(named: "ICN_parking.png")
+        parkingLotImgView.contentMode = .scaleAspectFit
+        
+        tableView.delegate   = self
+        tableView.dataSource = self
     }
-
+    
+    
+//    func putDummyData() -> [DummyData] {
+//
+//    }
 
 }
 
 
-extension ParkingLotInfoViewController: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
-    func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 2
+extension ParkingLotInfoViewController: UITableViewDelegate, UITableViewDataSource {
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
     }
     
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 6
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return dummyData.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "parkingLotInfoCell") as? ParkingLotInfoTableViewCell
+        let row = indexPath.row
+        
+        cell?.name.text = dummyData[row].name
+        cell?.carAvailableLbl.text = "\(dummyData[row].carAvailable)대 가능"
+        let carParked = Double(dummyData[row].parkingLotCapacity - dummyData[row].carAvailable)
+        let capacity = Double(dummyData[row].parkingLotCapacity)
+        
+        guard carParked != 0 else {cell?.setRingProgressValue(value: 0.0); return cell!}
+        let progressVal = carParked / capacity
+        print(carParked)
+        print(capacity)
+        print(progressVal)
+        print("-----------")
+        cell?.setRingProgressValue(value: progressVal)
+        
+        return cell!
     }
     
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "parkingLotInfoCell", for: indexPath)
-
-        cell.layer.cornerRadius = cell.frame.width / 3
-        cell.backgroundColor = UIColor.systemGray.withAlphaComponent(0.5)
-        cell.alpha = 0.5
-        
-        
-        return cell
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let height = self.view.frame.width / 4 - 20
-        return CGSize(width: height, height: height)
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        
-        print(indexPath)
-        
-        let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "parkingLotInfoHeader", for: indexPath)
-        
-        header.layer.borderColor = UIColor.blue.cgColor
-        header.layer.borderWidth = 1.0
-        
-        let headerLabel = UILabel(frame: CGRect(x: 50, y: 0, width: 0, height: header.frame.height))
-        headerLabel.text = "text"
-        headerLabel.sizeToFit()
-        headerLabel.center.y = header.frame.height / 2
-        headerLabel.layer.borderColor = UIColor.blue.cgColor
-        headerLabel.layer.borderWidth = 1.0
-        
-        header.addSubview(headerLabel)
-        
-        return header
-    }
 }
 
+
+
+
+class DummyData {
+    let name: String
+    let carAvailable: Int
+    let parkingLotCapacity: Int
+    
+    init(_name: String, _carAvailable: Int, _parkingLotCapacity: Int) {
+        name = _name
+        carAvailable = _carAvailable
+        parkingLotCapacity = _parkingLotCapacity
+    }
+}

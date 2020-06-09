@@ -4,7 +4,6 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -16,56 +15,125 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Cqb-TJ-FMW">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="813"/>
+                            <navigationBar contentMode="scaleToFill" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y3y-4b-vCo">
+                                <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                                <color key="backgroundColor" systemColor="systemGray6Color" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <items>
+                                    <navigationItem title="주차장 현황" id="rWf-wW-XQw"/>
+                                </items>
+                            </navigationBar>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TG3-4c-bXq">
+                                <rect key="frame" x="0.0" y="88" width="414" height="40"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="gB3-B6-gRb">
-                                    <size key="itemSize" width="128" height="128"/>
-                                    <size key="headerReferenceSize" width="50" height="30"/>
-                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                </collectionViewFlowLayout>
-                                <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" reuseIdentifier="parkingLotInfoCell" id="pgI-x6-jbU">
-                                        <rect key="frame" x="0.0" y="30" width="128" height="128"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="Zn1-lY-WR8">
-                                            <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="tcu-cg-bdC"/>
+                                </constraints>
+                            </view>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="1M2-pa-C4d">
+                                <rect key="frame" x="131.5" y="88" width="151" height="32"/>
+                                <segments>
+                                    <segment title="제1 터미널"/>
+                                    <segment title="제2 터미널"/>
+                                </segments>
+                            </segmentedControl>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nhN-YK-PoQ">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="60" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="0Lf-5a-9fw">
+                                <rect key="frame" x="0.0" y="378" width="414" height="435"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <view key="tableFooterView" contentMode="scaleToFill" id="br2-G6-tKJ">
+                                    <rect key="frame" x="0.0" y="116" width="414" height="44"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                </view>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="parkingLotInfoCell" rowHeight="60" id="Kbp-W4-Oqg" customClass="ParkingLotInfoTableViewCell" customModule="ICN_Info" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="60"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Kbp-W4-Oqg" id="Ycn-Tl-n0A">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="60"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cuQ-iM-1nS">
-                                                    <rect key="frame" x="43" y="53.5" width="42" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="주차장 명" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HKz-cs-50e">
+                                                    <rect key="frame" x="20" y="19.5" width="63" height="21"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="elu-qu-k37">
+                                                    <rect key="frame" x="329" y="-2.5" width="65" height="65"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" secondItem="elu-qu-k37" secondAttribute="height" multiplier="1:1" id="Zae-bE-8KZ"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
+                                                    <inset key="contentEdgeInsets" minX="8" minY="8" maxX="8" maxY="8"/>
+                                                    <state key="normal" title="Button"/>
+                                                </button>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1000대 가능" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zSj-y6-ADe">
+                                                    <rect key="frame" x="241" y="21" width="78" height="18"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="cuQ-iM-1nS" firstAttribute="centerX" secondItem="Zn1-lY-WR8" secondAttribute="centerX" id="QpQ-jg-u9q"/>
-                                                <constraint firstItem="cuQ-iM-1nS" firstAttribute="centerY" secondItem="Zn1-lY-WR8" secondAttribute="centerY" id="Sza-1C-ANP"/>
+                                                <constraint firstItem="elu-qu-k37" firstAttribute="trailing" secondItem="Ycn-Tl-n0A" secondAttribute="trailingMargin" id="3TF-Pj-bXb"/>
+                                                <constraint firstItem="HKz-cs-50e" firstAttribute="centerY" secondItem="Ycn-Tl-n0A" secondAttribute="centerY" id="Imk-k9-Axp"/>
+                                                <constraint firstItem="HKz-cs-50e" firstAttribute="leading" secondItem="Ycn-Tl-n0A" secondAttribute="leadingMargin" id="Wnd-91-6Uz"/>
+                                                <constraint firstItem="zSj-y6-ADe" firstAttribute="centerY" secondItem="Ycn-Tl-n0A" secondAttribute="centerY" id="dhX-Yp-w1W"/>
+                                                <constraint firstItem="elu-qu-k37" firstAttribute="leading" secondItem="zSj-y6-ADe" secondAttribute="trailing" constant="10" id="vtq-er-l5W"/>
+                                                <constraint firstItem="elu-qu-k37" firstAttribute="centerY" secondItem="Ycn-Tl-n0A" secondAttribute="centerY" id="wuX-S7-TjB"/>
                                             </constraints>
-                                        </collectionViewCellContentView>
-                                        <size key="customSize" width="128" height="128"/>
-                                    </collectionViewCell>
-                                </cells>
-                                <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="parkingLotInfoHeader" id="eac-k7-MOZ">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="30"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                </collectionReusableView>
-                            </collectionView>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="carAvailableLbl" destination="zSj-y6-ADe" id="Hh4-XD-znO"/>
+                                            <outlet property="name" destination="HKz-cs-50e" id="lUc-59-D1q"/>
+                                            <outlet property="statusIndicator" destination="elu-qu-k37" id="Y5b-zE-noN"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="hCQ-Qo-17N">
+                                <rect key="frame" x="0.0" y="128" width="414" height="250"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="250" id="JEB-Hp-QfC"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="Cqb-TJ-FMW" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="Aea-dg-aZ0"/>
-                            <constraint firstItem="Cqb-TJ-FMW" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="I6n-Dx-zRo"/>
-                            <constraint firstItem="Cqb-TJ-FMW" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Tc3-rz-3ND"/>
-                            <constraint firstItem="Cqb-TJ-FMW" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="xiA-5N-2Rq"/>
+                            <constraint firstItem="hCQ-Qo-17N" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="76H-1g-t9F"/>
+                            <constraint firstItem="hCQ-Qo-17N" firstAttribute="top" secondItem="TG3-4c-bXq" secondAttribute="bottom" id="8YI-rM-Aa1"/>
+                            <constraint firstItem="0Lf-5a-9fw" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="CBp-28-I5i"/>
+                            <constraint firstItem="1M2-pa-C4d" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Jwh-CM-xXk"/>
+                            <constraint firstItem="Y3y-4b-vCo" firstAttribute="top" secondItem="nhN-YK-PoQ" secondAttribute="bottom" id="MSE-uH-Ph2"/>
+                            <constraint firstItem="0Lf-5a-9fw" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="UWF-Ok-4dM"/>
+                            <constraint firstItem="hCQ-Qo-17N" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="XhM-st-ZWa"/>
+                            <constraint firstAttribute="trailing" secondItem="nhN-YK-PoQ" secondAttribute="trailing" id="ZJN-UD-5Mr"/>
+                            <constraint firstItem="TG3-4c-bXq" firstAttribute="top" secondItem="Y3y-4b-vCo" secondAttribute="bottom" id="bTB-tm-r4E"/>
+                            <constraint firstItem="1M2-pa-C4d" firstAttribute="top" secondItem="Y3y-4b-vCo" secondAttribute="bottom" id="d34-n2-bD6"/>
+                            <constraint firstItem="0Lf-5a-9fw" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="ffe-gb-8Lr"/>
+                            <constraint firstItem="TG3-4c-bXq" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="iTk-iP-huj"/>
+                            <constraint firstItem="TG3-4c-bXq" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="kmU-rc-QNN"/>
+                            <constraint firstItem="Y3y-4b-vCo" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="mSp-Ru-OLF"/>
+                            <constraint firstItem="Y3y-4b-vCo" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="qgX-hO-eL7"/>
+                            <constraint firstItem="nhN-YK-PoQ" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="sWE-4N-Obu"/>
+                            <constraint firstItem="0Lf-5a-9fw" firstAttribute="top" secondItem="hCQ-Qo-17N" secondAttribute="bottom" id="u7D-lb-Heo"/>
+                            <constraint firstItem="Y3y-4b-vCo" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="wL3-0S-JNn"/>
+                            <constraint firstItem="nhN-YK-PoQ" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="zMa-jC-ipp"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="주차장" id="Fwu-XH-REz"/>
                     <connections>
-                        <outlet property="parkingLotInfoCollectionView" destination="Cqb-TJ-FMW" id="zri-O4-MKB"/>
+                        <outlet property="airportSegmentCtrl" destination="1M2-pa-C4d" id="zin-Xo-Uom"/>
+                        <outlet property="navigationBar" destination="Y3y-4b-vCo" id="yWU-Kr-OPe"/>
+                        <outlet property="navigationBarBottomView" destination="TG3-4c-bXq" id="ILY-h1-M0h"/>
+                        <outlet property="navigationBarTopVIew" destination="nhN-YK-PoQ" id="AT8-Km-XC2"/>
+                        <outlet property="parkingLotImgView" destination="hCQ-Qo-17N" id="wgA-94-qnh"/>
+                        <outlet property="tableView" destination="0Lf-5a-9fw" id="TaA-3A-8JS"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -78,6 +146,7 @@
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="gQj-Of-Jgj" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="UFB-wa-wp2">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
